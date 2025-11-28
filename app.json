@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Quran Notification App",
+    "slug": "quran-notification-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.qurannotificationapp"
+    },
+    "android": {
+      "package": "com.qurannotificationapp"
+    }
+  }
+}
