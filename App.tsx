@@ -39,21 +39,8 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const notificationId = await sendMoodNotification(mood, 5);
+      await sendMoodNotification(mood, 0)
       
-      if (notificationId) {
-        Alert.alert(
-          'Notification Scheduled',
-          `A Quran verse for your "${mood}" mood will appear in 5 seconds.`,
-          [{ text: 'OK' }]
-        );
-      } else {
-        Alert.alert(
-          'Error',
-          'Failed to schedule notification. Please check permissions.',
-          [{ text: 'OK' }]
-        );
-      }
     } catch (error) {
       Alert.alert(
         'Error',

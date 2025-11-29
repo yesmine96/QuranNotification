@@ -111,7 +111,7 @@ const getRandomVerseFromAll = (verses: VersesData): string => {
  */
 export const sendMoodNotification = async (
   mood: string,
-  delaySeconds: number = 5
+  delaySeconds: number = 2
 ): Promise<string | null> => {
   try {
     console.log('=== Starting sendMoodNotification ===');
