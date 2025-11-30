@@ -4,6 +4,7 @@
     "slug": "quran-notification-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon-happy-quran.png",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
@@ -13,7 +14,16 @@
       "bundleIdentifier": "com.qurannotificationapp"
     },
     "android": {
-      "package": "com.qurannotificationapp"
+      "package": "com.qurannotificationapp",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon-happy-quran.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3c20d576-c8be-4621-93ee-9d46c7260ec5"
+      }
     }
   }
 }

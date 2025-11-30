@@ -7,8 +7,11 @@ import {
   ScrollView, 
   StatusBar,
   Alert,
-  SafeAreaView 
+  SafeAreaView,
+  Modal,
+  Pressable
 } from 'react-native';
+import privacyPolicy from './src/data/privacyPolicy';
 import { 
   sendMoodNotification, 
   getAvailableMoods,
@@ -19,6 +22,7 @@ export default function App() {
   const [selectedMood, setSelectedMood] = useState<string>('');
   const [moods, setMoods] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState<boolean>(false);
 
   useEffect(() => {
     // Initialize app
@@ -120,7 +124,33 @@ export default function App() {
             3. Receive your personalized Quran verse in 5 seconds
           </Text>
         </View>
+
+        <TouchableOpacity
+          style={styles.privacyLink}
+          onPress={() => setShowPrivacyModal(true)}
+        >
+          <Text style={styles.privacyLinkText}>Privacy Policy</Text>
+        </TouchableOpacity>
       </ScrollView>
+
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={showPrivacyModal}
+        onRequestClose={() => setShowPrivacyModal(false)}
+      >
+        <SafeAreaView style={styles.modalContainer}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>Privacy Policy</Text>
+            <Pressable onPress={() => setShowPrivacyModal(false)}>
+              <Text style={styles.closeButton}>Close</Text>
+            </Pressable>
+          </View>
+          <ScrollView style={styles.modalContent}>
+            <Text style={styles.modalText}>{privacyPolicy}</Text>
+          </ScrollView>
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -226,5 +256,48 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#7F8C8D',
     lineHeight: 22,
+  },
+  privacyLink: {
+    marginTop: 30,
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  privacyLinkText: {
+    color: '#3498DB',
+    fontSize: 14,
+    fontWeight: '600',
+    textDecorationLine: 'underline',
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
+  },
+  modalTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#2C3E50',
+  },
+  closeButton: {
+    fontSize: 16,
+    color: '#3498DB',
+    fontWeight: '600',
+  },
+  modalContent: {
+    flex: 1,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 14,
+    color: '#333',
+    lineHeight: 24,
   },
 });
